@@ -24,7 +24,7 @@ function getApi() {
 
  let index = data[i];
  let continent = ` <div class="continent">
-  <img src="${result.index[0].continents}" alt="">
+  <img src="" alt="">
   <p> <b>Country:</b> Liberia</p>
   <p><b>Population:</b> 5.3M </p>
 </div>`
