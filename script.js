@@ -2,6 +2,7 @@
 let result;
 let countriesDiv = document.querySelector(".content");
 let displayContinent = document.getElementById("displayContinent");
+let searchBar = document.getElementById("searchCountry")
 
 displayContinent.addEventListener("change", (event)=>{
     console.log(event.target.value)
@@ -19,8 +20,6 @@ function getApi(region) {
 
         countriesDiv.innerHTML = "";
         for (let i = 0; i < data.length; i++) {
-            // console.log(data[i].flags.png)
-            // console.log(data[i].name.common)
             countriesDiv.innerHTML += `<div class="continent">
             <img src="${data[i].flags.png}" alt="">
             <p> <b>Country:</b> ${data[i].name.common}</p>
@@ -31,6 +30,19 @@ function getApi(region) {
 
     })
 
-   
+    searchCountry.addEventListener("input", () => {
+        const searchTerm = searchCountry.value.toLowerCase();
+        const countryElements = countriesDiv.getElementsByClassName("continent");
+    
+        Array.from(countryElements).forEach((countryElement) => {
+            const countryName = countryElement.getElementsByTagName("p")[0].textContent.toLowerCase();
+            if (countryName.includes(searchTerm)) {
+                countryElement.style.display = "block";
+            } else {
+                countryElement.style.display = "none";
+            }
+        });
+    });
 
 }
+
