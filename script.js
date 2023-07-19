@@ -2,10 +2,13 @@
 let result;
 let countriesDiv = document.querySelector(".content");
 let displayContinent = document.getElementById("displayContinent");
-let searchBar = document.getElementById("searchCountry")
+let searchBar = document.getElementById("searchCountry");
+let moreInfo = document.querySelector(".moreInfo");
+let exitBtn = document.querySelector(".icon");
+// console.log(moreInfo)
 
 displayContinent.addEventListener("change", (event)=>{
-    console.log(event.target.value)
+    console.log(event.target.value) 
     getApi(event.target.value)
 })
 
@@ -14,7 +17,7 @@ function getApi(region) {
     fetch(`https://restcountries.com/v3.1/region/${region}`)
     .then(function(response){
         return response.json();
-    })
+    }) 
     .then(function(data){
         console.log(data)
 
@@ -45,4 +48,29 @@ function getApi(region) {
     });
 
 }
+
+    countriesDiv.addEventListener("click", (event)=> {
+        moreInfo.style.display ="flex"
+    
+     if(event.target.className.includes(".content")){
+
+        console.log(moreInfo);
+        console.log(event.target);
+        moreInfo.style.display === "block"
+       
+
+    }
+    else {
+
+    }
+
+    console.log(event.target);
+
+})
+
+exitBtn.addEventListener("click", (event)=>{
+
+    moreInfo.style.display ="none"
+
+})
 
