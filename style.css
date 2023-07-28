@@ -36,22 +36,34 @@ body {
     margin-top: 30px;
     flex-wrap: wrap;
     border-radius: 20px;
+    position: relative;
+    gap: 2rem;
     
 }
 
 .continent {
-
-    width: 20rem;    
+    width: 20rem;
     height: auto;
     padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(107, 102, 98, 0.616);
+    border-radius: 10px;
+    
+}
+.continent:hover {
+    cursor: pointer;
 }
 
-
-img{
-
-    width: 16rem;
+img.flag {
+    height: 150px;
+    width: 220px;
 }
-
+.logo {
+    width: 50%;
+}
 p {
 
     font-size: 15px;
@@ -94,40 +106,54 @@ select{
     background-color: gray;
 }
 
-.moreInfo {
-
-    border: white 2px solid;
-    display:none;
-    justify-content: space-between;
-    padding: 3rem;
-    width: 50rem;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    background-color: rgb(40, 44, 43);
-    margin-top: 20px;
+.moreinfo {
+    background-color: rgba(0, 0, 0, 0.815);
     position: fixed;
-    left: 0;
-    right:0;
-    bottom: 0;
-    top: 0;
-    z-index: 1;
+    left: 10%;
+    right: 10%;
+    /* bottom: 10%; */
+    top: 10%;
+    z-index: 100;
     border-radius: 20px;
     flex-wrap:wrap-reverse;
-
+    color: bisque;
+    box-shadow: 2px 2px grey;
+    overflow: hidden;
+    display: flex;
 
 }
+.moreinfo .flag {
+    width: 50%;
+    padding: 2rem;
+    height: 300px;
+}
 
-.icon img {
+.moreinfo .addInfo {
+    padding: 1rem;
+    height: 300px;
+    background: rgba(51, 45, 45, 0.973);
+    flex-grow: 1;
+}
+.icon {
+    width: fit-content;
+}
 
-    margin-left:360px;
+.exit {
     width: 50px;
+    height: 50px;
+    margin-left: 360px;
     border: 1px solid white;
-    border-radius: 10px;
+    background: #fff;
     flex-wrap: wrap;
-
+    position: relative;
+    left: 60%;
+    top: -10%;
+    cursor: pointer;
+    rotate: 180deg;
 }
-
+.show {
+    display: flex;
+}
 .flagBar div {
 
     padding: 2rem;
