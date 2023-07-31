@@ -119,7 +119,7 @@ select{
     color: bisque;
     box-shadow: 2px 2px grey;
     overflow: hidden;
-    display: flex;
+    display:flex;
 
 }
 .moreinfo .flag {
@@ -144,15 +144,15 @@ select{
     margin-left: 360px;
     border: 1px solid white;
     background: #fff;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
     position: relative;
     left: 60%;
     top: -10%;
     cursor: pointer;
     rotate: 180deg;
 }
-.show {
-    display: flex;
+.moreinfo.show {
+    display:block;
 }
 .flagBar div {
 

@@ -85,21 +85,16 @@ function overview(details){
     countriesDiv.appendChild(moreInfo);
     displayOverView = true;
 }
-countriesDiv.addEventListener("click", (event) => {
-    console.log(event.target.classList)
-    if(event.target.classList === 'exit'){
-        moreInfo.classList.toggle('show');
-        // console.log('connie')
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains('exit') || event.target.closest('.exit')) {
+        moreInfo.classList.remove('show');
+        displayOverView = false;
+    } else if (event.target.closest('.continent')) {
+        let details = event.target.closest('.continent').innerHTML;
+        if (displayOverView === true) return;
+        overview(details);
     }
-
-    if(!event.target.classlist === 'continent') return
-    let details = event.target.innerHTML; 
-
-    if(displayOverView === true) return;
-    overview(details);
-    
-
-} )  
+});
 
 
 
