@@ -1,6 +1,7 @@
 
 let result;
 let data;
+let countryData;
 let countriesDiv = document.querySelector(".content");
 let displayContinent = document.getElementById("displayContinent");
 let searchBar = document.getElementById("searchCountry");
@@ -18,7 +19,7 @@ let displayOverView = false;
 // console.log(moreInfo) 
 
 displayContinent.addEventListener("change", (event)=>{
-    console.log(event.target.value) 
+    // console.log(event.target.value) 
     getApi(event.target.value)
 })
 
@@ -27,13 +28,16 @@ function getApi(region) {
     fetch(`https://restcountries.com/v3.1/region/${region}`)
     .then(function(response){
         return response.json();
+
     }) 
     .then(function(data){
+        countryData = [...data];
+
         // console.log(data)
         countriesDiv.innerHTML = "";
         for (let i = 0; i < data.length; i++) {
             // console.log(data[i].continents)
-            countriesDiv.innerHTML += `<div class="continent">
+            countriesDiv.innerHTML += `<div class="continent" data-id="${[i]}">
             <img class="flag" src="${data[i].flags.png}" alt="">
 
             <div class="addInfo">
@@ -63,8 +67,8 @@ function getApi(region) {
 
 }
 
-function overview(details){
-    
+function overview(index){
+    console.log(countryData[index]);
     moreInfo = document.createElement('div');
     moreInfo.innerHTML = " ";
     
@@ -73,10 +77,31 @@ function overview(details){
     moreInfo.innerHTML = `
 
 
-            ${details}
             
+    <div class="close">
+    <span class="name">${countryData[index].name.official}</span>
+    <span class="exit">Close</span></div>
 
-    <svg class="exit" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 512 512"><path d="M336,376V272H191a16,16,0,0,1,0-32H336V136a56.06,56.06,0,0,0-56-56H88a56.06,56.06,0,0,0-56,56V376a56.06,56.06,0,0,0,56,56H280A56.06,56.06,0,0,0,336,376Z"/><path d="M425.37,272l-52.68,52.69a16,16,0,0,0,22.62,22.62l80-80a16,16,0,0,0,0-22.62l-80-80a16,16,0,0,0-22.62,22.62L425.37,240H336v32Z"/></svg>
+    <div class="overviewInfo">
+    <div class="flag"><img class="countryFlag" src="${countryData[index].flags.png}"></div>
+    <div class="additionalInfo">
+    <section class="stats">
+    <div class="details"><b>Population</b> ${countryData[index].population}</div>
+    <div class="details"><b>Capital:</b>  ${countryData[index].capital}</div>
+    </section>
+    <section class="stats">
+    <div class="details"><b>Region:</b> ${countryData[index].subregion}</div>
+    <div class="details"><b>Time Zone:</b> ${countryData[index].timezones}</div>
+    </section>
+    <section class="stats">
+    <div class="details"><b>Square Miles:</b>  ${countryData[index].area}</div>
+    </section>
+    </div>
+    <div class="coarms"><img class="seal" src="${countryData[index].coatOfArms.png}">
+        <p>THE COAT OF ARMS </p>
+    </div>
+    </div>
+    
 
 
 
@@ -86,13 +111,16 @@ function overview(details){
     displayOverView = true;
 }
 document.addEventListener("click", (event) => {
-    if (event.target.classList.contains('exit') || event.target.closest('.exit')) {
-        moreInfo.classList.remove('show');
+    console.log(event.target.classList);
+    if (event.target.classList.contains('exit')) {
+        moreInfo.style.display = 'none';
         displayOverView = false;
     } else if (event.target.closest('.continent')) {
         let details = event.target.closest('.continent').innerHTML;
+        let index = event.target.getAttribute('data-id');
+        console.log(index);
         if (displayOverView === true) return;
-        overview(details);
+        overview(index);
     }
 });
 
