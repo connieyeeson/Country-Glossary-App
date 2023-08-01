@@ -160,8 +160,10 @@ select{
     cursor: pointer;
 }
 .exit {
-    padding: 0 10px;
+    padding: 0 3px;
     color: black;
+    background-color: rgb(112, 120, 121);
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -231,8 +233,7 @@ select{
 @media (min-width: 120px) and (max-width: 480px) {
     .moreinfo {
         background-color: rgba(0, 0, 0, 0.815);
-        /* position: fixed; */
-       border-radius: 0;
+        border-radius: 0;
         top: 0;
         z-index: 100;
         flex-wrap: wrap;
@@ -263,23 +264,55 @@ select{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: white;
+        color: rgb(247, 243, 243);
         font-weight: 900;
         padding: 1rem 0;
     }
 
 .exit {
-    padding: 0 10px;
+    padding: 0 5px;
     color: black;
+    background-color: rgb(112, 120, 121);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.4rem;
     letter-spacing: 2px;
     font-weight: 900;
-    /* position: absolute; */
+    /* margin-right:20px ; */
     right: 0;
     top: 0;
     bottom: 0;
+}
+
+
+
+.name {
+    color: black;
+    font-size: 2.4rem;
+    font-weight: bolder;
+    margin-right:90px ;
+
+}
+
+.close{
+    width: 100%;
+    height: 100%;
+}
+.additionalInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0px;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+.seal {
+    height: 50px;
+    width: 50px;
+    display: block;
+    background-color: antiquewhite;
+    padding: 10px;
+    border-radius: 100%;
 }
 }

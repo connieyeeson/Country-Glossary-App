@@ -79,7 +79,7 @@ function overview(index){
 
             
     <div class="close">
-    <span class="name">${countryData[index].name.official}</span>
+    <span class="name">${countryData[index].name.common}</span>
     <span class="exit">Close</span></div>
 
     <div class="overviewInfo">
