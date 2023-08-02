@@ -63,6 +63,7 @@ img.flag {
 }
 .logo {
     width: 50%;
+    display: none;
 }
 p {
 

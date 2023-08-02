@@ -19,10 +19,10 @@ let displayOverView = false;
 // console.log(moreInfo) 
 
 displayContinent.addEventListener("change", (event)=>{
-    // console.log(event.target.value) 
     getApi(event.target.value)
 })
 
+getApi("Africa")
 function getApi(region) {
 
     fetch(`https://restcountries.com/v3.1/region/${region}`)
@@ -54,7 +54,7 @@ function getApi(region) {
         const searchTerm = searchCountry.value.toLowerCase();
         const countryElements = countriesDiv.getElementsByClassName("continent");
     
-        Array.from(countryElements).forEach((countryElement) => {
+            Array.from(countryElements).forEach((countryElement) => {
             const countryName = countryElement.getElementsByTagName("p")[0].textContent.toLowerCase();
             if (countryName.includes(searchTerm)) {
                 countryElement.style.display = "block";
@@ -75,9 +75,7 @@ function overview(index){
     moreInfo.setAttribute('class', 'moreinfo')
     console.log('created')
     moreInfo.innerHTML = `
-
-
-            
+  
     <div class="close">
     <span class="name">${countryData[index].name.common}</span>
     <span class="exit">Close</span></div>
